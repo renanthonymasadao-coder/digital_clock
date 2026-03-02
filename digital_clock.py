@@ -1,7 +1,19 @@
 import tkinter as ui
+import time
 
 window = ui.Tk()
 
-digital_clock_lbl = ui.Label(window, text="00:00:00:")
+def update_clock():
+    hours = time.strftime("%I")
+    minutes = time.strftime("%M")
+    seconds = time.strftime("%S")
+    am_or_pm = time.strftime("%p")
+    time_text = hours + ":" + minutes + ":" + seconds + " " + am_or_pm
+    digital_clock.config(text=time_text)
+
+digital_clock_lbl = ui.Label(window, text="00:00:00:",
+                             font="Helvetica 72 bold")
+
+digital_clock_lbl.pack()
 
 window.mainloop()
