@@ -1,23 +1,19 @@
 import tkinter as ui
-import time
 
 window = ui.Tk()
-window.title("Digital Clock")
+window.title("Analog Clock")
 window.geometry("400x400")
+window.resizable(False, False)
 
 canvas = ui.Canvas(window, width=400, height=400, bg="black")
-canvas.pack(expand=True, fill="both")
+canvas.pack()
 
-time_label = canvas.create_text(
-    200, 200,
-    fill="white",
-    font=("Arial", 30, "bold")
-)
+center_x = 200
+center_y = 200
+radius = 180
 
-def update_clock():
-    current_time = time.strftime("%I:%M:%S %p")
-    canvas.itemconfig(time_label, text=current_time)
-    window.after(1000, update_clock)
+canvas.create_oval(center_x - radius, center_y - radius,
+                   center_x + radius, center_y + radius,
+                   outline="white", width=4)
 
-update_clock()
 window.mainloop()
